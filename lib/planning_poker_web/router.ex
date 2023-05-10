@@ -12,6 +12,7 @@ defmodule PlanningPokerWeb.Router do
     resources "/tasks", TaskController, except: [:new, :edit]
     resources "/games/rooms", RoomController, except: [:new, :edit]
     resources "/pontuations", PontuationController, except: [:new, :edit]
+    resources "/users", UserController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development

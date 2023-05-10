@@ -1,17 +1,14 @@
 defmodule PlanningPoker do
-  alias PlanningPoker.Rooms.All, as: RoomAll
-  alias PlanningPoker.Rooms.Show, as: RoomShow
+  defdelegate list_rooms(), to: PlanningPoker.Rooms.All, as: :call
+  defdelegate get_room(id), to: PlanningPoker.Rooms.Show, as: :call
 
-  alias PlanningPoker.Tasks.Show, as: TaskShow
+  defdelegate get_task(id), to: PlanningPoker.Tasks.Show, as: :call
 
-  alias PlanningPoker.Pontuations.All, as: PontuationAll
-  alias PlanningPoker.Pontuations.Show, as: PontuationShow
+  defdelegate list_pontuations(), to: PlanningPoker.Pontuations.All, as: :call
+  defdelegate get_pontuation(id), to: PlanningPoker.Pontuations.Show, as: :call
 
-  defdelegate list_rooms(), to: RoomAll, as: :call
-  defdelegate get_room(id), to: RoomShow, as: :call
-
-  defdelegate get_task(id), to: TaskShow, as: :call
-
-  defdelegate list_pontuations(), to: PontuationAll, as: :call
-  defdelegate get_pontuation(id), to: PontuationShow, as: :call
+  defdelegate list_users(), to: PlanningPoker.Users.All, as: :call
+  defdelegate get_user(id), to: PlanningPoker.Users.Show, as: :call
+  defdelegate create_user(params), to: PlanningPoker.Users.Create, as: :call
+  defdelegate update_user(params), to: PlanningPoker.Users.Update, as: :call
 end

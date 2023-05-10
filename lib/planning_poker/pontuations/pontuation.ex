@@ -9,7 +9,7 @@ defmodule PlanningPoker.Pontuations.Pontuation do
 
   schema "pontuations" do
     field :value, :decimal
-    field :task_id, :binary_id
+    belongs_to :task, Task
 
     timestamps()
   end
