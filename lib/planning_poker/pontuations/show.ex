@@ -1,10 +1,9 @@
-defmodule PlanningPoker.Rooms.Show do
+defmodule PlanningPoker.Pontuations.Show do
   import Ecto.Query, only: [from: 2]
   import PlanningPoker.Utils
 
   alias PlanningPoker.{Repo, Error}
-  alias PlanningPoker.Rooms.Room
-  # alias PlanningPoker.Tasks.Task
+  alias PlanningPoker.Pontuations.Pontuation
 
   def call(id) do
     case check_uuid(id) do
@@ -15,11 +14,11 @@ defmodule PlanningPoker.Rooms.Show do
 
   def get_room(id) do
     query =
-      from u in Room,
+      from u in Pontuation,
         where: u.id == ^id
 
     case query |> Repo.one() do
-      nil -> {:error, %Error{status: :bad_request, result: "Room not found"}}
+      nil -> {:error, %Error{status: :bad_request, result: "Pontuation not found"}}
       result -> {:ok, result}
     end
   end

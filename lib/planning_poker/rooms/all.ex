@@ -1,4 +1,4 @@
-defmodule PlanningPoker.Room.All do
+defmodule PlanningPoker.Rooms.All do
   alias PlanningPoker.{Repo}
   alias PlanningPoker.Rooms.Room
 
