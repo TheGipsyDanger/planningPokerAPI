@@ -8,11 +8,11 @@ defmodule PlanningPoker.Pontuations.Show do
   def call(id) do
     case check_uuid(id) do
       {:error, error} -> {:error, %Error{status: 400, result: error}}
-      {:ok, uuid_checked} -> get_room(uuid_checked)
+      {:ok, uuid_checked} -> get_pontuation(uuid_checked)
     end
   end
 
-  def get_room(id) do
+  def get_pontuation(id) do
     query =
       from u in Pontuation,
         where: u.id == ^id

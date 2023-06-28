@@ -12,10 +12,10 @@ defmodule PlanningPokerWeb.PontuationController do
   end
 
   def create(conn, %{"pontuation" => pontuation_params}) do
-    with {:ok, %Pontuation{} = pontuation} <- Pontuations.create_pontuation(pontuation_params) do
+    with {:ok, %Pontuation{} = pontuation} <- PlanningPoker.create_pontuation(pontuation_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", Routes.pontuation_path(conn, :show, pontuation))
+      |> put_resp_header("location", Routes.user_path(conn, :show, pontuation))
       |> render("show.json", pontuation: pontuation)
     end
   end
@@ -38,10 +38,10 @@ defmodule PlanningPokerWeb.PontuationController do
   end
 
   def delete(conn, %{"id" => id}) do
-    pontuation = Pontuations.get_pontuation!(id)
-
-    with {:ok, %Pontuation{}} <- Pontuations.delete_pontuation(pontuation) do
-      send_resp(conn, :no_content, "")
+    with {:ok, %Pontuation{}} <- PlanningPoker.delete_pontuation(id) do
+      conn
+      |> put_status(:ok)
+      |> json(%{message: "Deleted"})
     end
   end
 end
