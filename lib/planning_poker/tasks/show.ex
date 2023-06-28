@@ -17,7 +17,7 @@ defmodule PlanningPoker.Tasks.Show do
     query =
       from u in Task,
         where: u.id == ^id,
-        preload: [:pontuation]
+        preload: [:pontuation, :tasks_pontuations]
 
     case query |> Repo.one() do
       nil -> {:error, %Error{status: :bad_request, result: "Task not found"}}

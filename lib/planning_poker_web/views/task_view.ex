@@ -2,6 +2,7 @@ defmodule PlanningPokerWeb.TaskView do
   use PlanningPokerWeb, :view
   alias PlanningPokerWeb.TaskView
   alias PlanningPokerWeb.PontuationView
+  alias PlanningPokerWeb.TaskPontuationView
 
   def render("index.json", %{tasks: tasks}) do
     %{status: "Success", message: "", data: render_many(tasks, TaskView, "task.json")}
@@ -26,7 +27,9 @@ defmodule PlanningPokerWeb.TaskView do
     %{
       id: task.id,
       name: task.name,
-      pontuation: render_one(task.pontuation, PontuationView, "pontuation.json")
+      pontuation: render_one(task.pontuation, PontuationView, "pontuation.json"),
+      tasks_pontuations:
+        render_many(task.tasks_pontuations, TaskPontuationView, "task_pontuation.json")
     }
   end
 end

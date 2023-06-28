@@ -4,6 +4,7 @@ defmodule PlanningPoker.Tasks.Task do
 
   alias PlanningPoker.Rooms.Room
   alias PlanningPoker.Pontuations.Pontuation
+  alias PlanningPoker.TasksPontuations.TaskPontuation
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -12,6 +13,7 @@ defmodule PlanningPoker.Tasks.Task do
     field :name, :string
     belongs_to :room, Room
     has_one :pontuation, Pontuation
+    has_many :tasks_pontuations, TaskPontuation
 
     timestamps()
   end

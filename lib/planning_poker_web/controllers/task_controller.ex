@@ -20,10 +20,16 @@ defmodule PlanningPokerWeb.TaskController do
     end
   end
 
+  def done(conn, %{"id" => id}) do
+    with {:ok, %Task{} = task} <- PlanningPoker.done_task(id) do
+      conn
+      |> put_status(:ok)
+      |> render("show.json", task: task)
+    end
+  end
+
   def show(conn, %{"id" => id}) do
     with {:ok, %Task{} = task} <- PlanningPoker.get_task(id) do
-      IO.inspect(task)
-
       conn
       |> put_status(:ok)
       |> render("show.json", task: task)

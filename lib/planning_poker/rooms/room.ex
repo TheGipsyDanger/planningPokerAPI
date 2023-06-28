@@ -17,5 +17,3 @@ defmodule PlanningPoker.Rooms.Room do
     |> validate_required([:has_password])
   end
 end
-
-# preload: [:pontuation]
