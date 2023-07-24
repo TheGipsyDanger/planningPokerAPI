@@ -16,6 +16,13 @@ defmodule PlanningPokerWeb.Endpoint do
   #
   # You should set gzip to true if you are running phx.digest
   # when deploying your static files in production.
+  plug CORSPlug,
+    origins: "*",
+    allowed_methods: [:get, :post, :put, :patch, :delete, :options]
+
+  # allowed_headers: ["content-type", "authorization"],
+  # max_age: 900
+
   plug Plug.Static,
     at: "/",
     from: :planning_poker,

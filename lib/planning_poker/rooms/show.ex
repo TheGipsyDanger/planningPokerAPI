@@ -4,7 +4,6 @@ defmodule PlanningPoker.Rooms.Show do
 
   alias PlanningPoker.{Repo, Error}
   alias PlanningPoker.Rooms.Room
-  # alias PlanningPoker.Tasks.Task
 
   def call(id) do
     case check_uuid(id) do
@@ -15,10 +14,18 @@ defmodule PlanningPoker.Rooms.Show do
 
   def get_room(id) do
     query =
-      from u in Room,
-        where: u.id == ^id
+      from(r in Room,
+        where: r.id == ^id,
+        join: t in assoc(r, :tasks),
+        left_join: p in assoc(t, :pontuation),
+        preload: [{:tasks, :pontuation}, tasks: t]
+      )
 
-    case query |> Repo.one() do
+    response = query |> Repo.one()
+
+    IO.inspect(response)
+
+    case(response) do
       nil -> {:error, %Error{status: :bad_request, result: "Room not found"}}
       result -> {:ok, result}
     end

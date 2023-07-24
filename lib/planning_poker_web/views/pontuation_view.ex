@@ -18,6 +18,12 @@ defmodule PlanningPokerWeb.PontuationView do
     }
   end
 
+  def render("pontuationToRoom.json", %{pontuation: pontuation}) do
+    %{
+      value: Decimal.to_float(pontuation.value)
+    }
+  end
+
   def render("pontuation.json", %{pontuation: pontuation}) do
     %{
       id: pontuation.id,

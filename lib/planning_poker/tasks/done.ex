@@ -38,7 +38,7 @@ defmodule PlanningPoker.Tasks.Done do
 
       handle_update(
         {:ok,
-         Taskc
+         Task
          |> Repo.get(id)
          |> Repo.preload([:pontuation, :tasks_pontuations])}
       )
