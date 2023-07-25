@@ -2,7 +2,7 @@ defmodule PlanningPoker.Users.Update do
   alias PlanningPoker.{Repo, Error}
   alias PlanningPoker.Users.User
 
-  def call(%{"id" => id, "user" => user_params} = params) do
+  def call(%{"id" => id, "user" => user_params} = _params) do
     case Repo.get(User, id) do
       nil -> {:error, %Error{status: 400, result: "User not found"}}
       user -> do_update(user, user_params)
