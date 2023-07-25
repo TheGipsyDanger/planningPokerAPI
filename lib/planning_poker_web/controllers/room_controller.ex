@@ -11,8 +11,8 @@ defmodule PlanningPokerWeb.RoomController do
     render(conn, "index.json", rooms: rooms)
   end
 
-  def create(conn, %{"room" => room_params}) do
-    with {:ok, %Room{} = room} <- PlanningPoker.create_room(room_params) do
+  def create(conn, _params) do
+    with {:ok, %Room{} = room} <- PlanningPoker.create_room() do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.room_path(conn, :show, room))

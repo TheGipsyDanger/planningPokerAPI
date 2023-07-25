@@ -8,7 +8,6 @@ defmodule PlanningPoker.Rooms.Room do
   @foreign_key_type :binary_id
 
   schema "rooms" do
-    field :has_password, :string
     field :room_id, :string
     has_many :tasks, Task
 
@@ -18,7 +17,7 @@ defmodule PlanningPoker.Rooms.Room do
   @doc false
   def changeset(room, attrs) do
     room
-    |> cast(attrs, [:has_password, :room_id])
-    |> validate_required([:has_password, :room_id])
+    |> cast(attrs, [:room_id])
+    |> validate_required([:room_id])
   end
 end

@@ -18,7 +18,6 @@ defmodule PlanningPokerWeb.RoomView do
   def render("room.json", %{room: room}) do
     %{
       id: room.id,
-      has_password: room.has_password,
       room_id: room.room_id
     }
   end
@@ -26,7 +25,6 @@ defmodule PlanningPokerWeb.RoomView do
   def render("fullRoom.json", %{room: room}) do
     %{
       id: room.id,
-      has_password: room.has_password,
       room_id: room.room_id,
       tasks: render_many(room.tasks, TaskView, "showToRoom.json")
     }

@@ -13,8 +13,6 @@ defmodule PlanningPokerWeb.UserView do
   def render("user.json", %{user: user}) do
     %{
       id: user.id,
-      name: user.name,
-      nickname: user.nickname,
       user_type: user.user_type
     }
   end
