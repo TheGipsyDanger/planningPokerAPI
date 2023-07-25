@@ -1,6 +1,7 @@
 defmodule PlanningPoker do
   defdelegate list_rooms(), to: PlanningPoker.Rooms.All, as: :call
   defdelegate get_room(id), to: PlanningPoker.Rooms.Show, as: :call
+  defdelegate create_room(params), to: PlanningPoker.Rooms.Create, as: :call
 
   defdelegate get_task(id), to: PlanningPoker.Tasks.Show, as: :call
   defdelegate done_task(id), to: PlanningPoker.Tasks.Done, as: :call

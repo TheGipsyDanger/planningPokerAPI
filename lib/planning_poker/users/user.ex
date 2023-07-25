@@ -15,7 +15,7 @@ defmodule PlanningPoker.Users.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:name, :nickname, :user_type])
-    |> validate_required([:name, :nickname, :user_type])
+    |> cast(attrs, [:nickname, :user_type])
+    |> validate_required([:nickname, :user_type])
   end
 end

@@ -9,14 +9,16 @@ defmodule PlanningPoker.Rooms.Room do
 
   schema "rooms" do
     field :has_password, :string
+    field :room_id, :string
     has_many :tasks, Task
+
     timestamps()
   end
 
   @doc false
   def changeset(room, attrs) do
     room
-    |> cast(attrs, [:has_password])
-    |> validate_required([:has_password])
+    |> cast(attrs, [:has_password, :room_id])
+    |> validate_required([:has_password, :room_id])
   end
 end
