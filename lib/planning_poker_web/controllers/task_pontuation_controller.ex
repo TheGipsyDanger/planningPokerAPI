@@ -13,7 +13,7 @@ defmodule PlanningPokerWeb.TaskPontuationController do
 
   def create(conn, %{"task_pontuation" => task_pontuation_params}) do
     with {:ok, %TaskPontuation{} = task_pontuation} <-
-           TasksPontuations.create_task_pontuation(task_pontuation_params) do
+           PlanningPoker.create_task_pontuation(task_pontuation_params) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.task_pontuation_path(conn, :show, task_pontuation))

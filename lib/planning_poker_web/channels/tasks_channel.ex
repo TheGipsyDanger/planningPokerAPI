@@ -2,12 +2,8 @@ defmodule PlanningPokerWeb.TasksChannel do
   use PlanningPokerWeb, :channel
 
   @impl true
-  def join("tasks:lobby", payload, socket) do
-    if authorized?(payload) do
-      {:ok, socket}
-    else
-      {:error, %{reason: "unauthorized"}}
-    end
+  def join("tasks:" <> id, _payload, socket) do
+    {:ok, socket}
   end
 
   # Channels can be used in a request/response fashion
@@ -23,10 +19,5 @@ defmodule PlanningPokerWeb.TasksChannel do
   def handle_in("shout", payload, socket) do
     broadcast(socket, "shout", payload)
     {:noreply, socket}
-  end
-
-  # Add authorization logic here as required.
-  defp authorized?(_payload) do
-    true
   end
 end
