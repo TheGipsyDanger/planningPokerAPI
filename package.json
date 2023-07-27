@@ -1,5 +1,10 @@
 {
-  "dependencies": {
-    "typesafe-actions": "^5.1.0"
+  "name": "planning_poker_web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "clean": "mix ecto.drop && mix ecto.create && mix ecto.migrate && mix run priv/repo/seeds.exs",
+    "restore": "mix ecto.drop && mix ecto.create && mix ecto.migrate && mix run priv/repo/seeds.exs && iex -S mix phx.server",
+    "start": "iex -S mix phx.server"
   }
 }

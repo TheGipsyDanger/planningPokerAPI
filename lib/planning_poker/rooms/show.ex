@@ -15,7 +15,7 @@ defmodule PlanningPoker.Rooms.Show do
 
     PlanningPokerWeb.Endpoint.broadcast("tasks:lobby", "update", %{sales_id: "001"})
 
-    case(query |> Repo.one()) do
+    case query |> Repo.one() do
       nil -> {:error, %Error{status: :bad_request, result: "Room not found"}}
       result -> {:ok, result}
     end
