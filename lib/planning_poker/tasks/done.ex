@@ -30,12 +30,6 @@ defmodule PlanningPoker.Tasks.Done do
 
       task |> Task.changeset(%{pontuation: pontuation}) |> Repo.update()
 
-      IO.inspect("TASK")
-      IO.inspect("TASK")
-      IO.inspect("TASK")
-      IO.inspect(task)
-      IO.inspect(pontuation)
-
       handle_update(
         {:ok,
          Task

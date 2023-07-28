@@ -23,13 +23,19 @@ task_room_params_1 = %{status: "opened", task_id: task_1.id}
 task_room_params_2 = %{status: "opened", task_id: task_2.id}
 {:ok, task_room_2} = PlanningPoker.create_task_room(task_room_params_2)
 
-user_params_1 = %{user_type: "active", task_room_id: task_room_1.id}
-user_params_2 = %{user_type: "active", task_room_id: task_room_1.id}
-user_params_3 = %{user_type: "active", task_room_id: task_room_1.id}
+IO.inspect("ROOM")
+IO.inspect("ROOM")
+IO.inspect(room.room_id)
+IO.inspect("ROOM")
+IO.inspect("ROOM")
 
-{:ok, user_1} = PlanningPoker.create_user(user_params_1)
-{:ok, user_2} = PlanningPoker.create_user(user_params_2)
-{:ok, user_3} = PlanningPoker.create_user(user_params_3)
+# user_params_1 = %{user_type: "active", task_room_id: task_room_1.id}
+# user_params_2 = %{user_type: "active", task_room_id: task_room_1.id}
+# user_params_3 = %{user_type: "active", task_room_id: task_room_1.id}
+
+# {:ok, user_1} = PlanningPoker.create_user(user_params_1)
+# {:ok, user_2} = PlanningPoker.create_user(user_params_2)
+# {:ok, user_3} = PlanningPoker.create_user(user_params_3)
 
 # IO.inspect(user_1 |> PlanningPoker.Repo.preload(:task_room))
 # IO.inspect(user_2 |> PlanningPoker.Repo.preload(:task_room))

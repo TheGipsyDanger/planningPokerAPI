@@ -16,6 +16,7 @@ defmodule PlanningPokerWeb.TasksChannel do
   @impl true
   def handle_in("entered_room", payload, socket) do
     broadcast(socket, "entered_room", payload)
+    {:reply, {:ok, payload}, socket}
   end
 
   # It is also common to receive messages from the client and

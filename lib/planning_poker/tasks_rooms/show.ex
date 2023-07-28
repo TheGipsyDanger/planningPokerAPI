@@ -23,8 +23,6 @@ defmodule PlanningPoker.TasksRooms.Show do
 
     response = query |> Repo.one()
 
-    IO.inspect(response)
-
     case response do
       nil -> {:error, %Error{status: :bad_request, result: "Task room not found"}}
       result -> {:ok, result}
