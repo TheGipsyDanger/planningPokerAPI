@@ -8,7 +8,11 @@ defmodule PlanningPoker.Tasks.Create do
     |> handle_insert()
   end
 
-  defp handle_insert({:ok, %Task{}} = result), do: result
+  defp handle_insert({:ok, %Task{}} = result) do
+    {:ok, task} = result
+    PlanningPoker.create_task_room(%{status: "opened", task_id: task.id})
+    result
+  end
 
   defp handle_insert({:error, result}) do
     {:error, Error.build(:bad_request, result)}

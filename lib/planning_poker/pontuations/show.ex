@@ -14,8 +14,24 @@ defmodule PlanningPoker.Pontuations.Show do
 
   def get_pontuation(id) do
     query =
-      from u in Pontuation,
+      from(u in Pontuation,
         where: u.id == ^id
+      )
+
+    query_two =
+      from(u0 in PlanningPoker.Users.User,
+        where: u0.id == ^"de60c476-ebfe-457e-82fb-8a89ccaa2519"
+      )
+
+    teste = query_two |> Repo.one()
+
+    IO.inspect("AQUIIII")
+    IO.inspect("AQUIIII")
+    IO.inspect("AQUIIII")
+    IO.inspect("AQUIIII")
+    IO.inspect("AQUIIII")
+    IO.inspect("AQUIIII")
+    IO.inspect(teste)
 
     case query |> Repo.one() do
       nil -> {:error, %Error{status: :bad_request, result: "Pontuation not found"}}

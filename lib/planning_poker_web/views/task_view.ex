@@ -25,6 +25,19 @@ defmodule PlanningPokerWeb.TaskView do
     }
   end
 
+  def render("taskToTaskRoom.json", %{task: task}) do
+    %{
+      id: task.id,
+      name: task.name,
+      tasks_pontuations:
+        render_many(
+          task.tasks_pontuations,
+          TaskPontuationView,
+          "task_pontuation_to_task_room.json"
+        )
+    }
+  end
+
   def render("task.json", %{task: task}) do
     %{
       id: task.id,

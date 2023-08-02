@@ -16,9 +16,7 @@ defmodule PlanningPoker.TasksPontuations.Update do
     |> handle_update()
   end
 
-  defp handle_update({:ok, %TaskPontuation{}} = result) do
-    result
-  end
+  defp handle_update({:ok, %TaskPontuation{}} = result), do: result
 
   defp handle_update({:error, result}) do
     {:error, Error.build(:bad_request, result)}

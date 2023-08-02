@@ -24,7 +24,7 @@ defmodule PlanningPokerWeb.TaskRoomView do
     %{
       id: task_room.id,
       status: task_room.status,
-      task: render_one(task_room.task, TaskView, "task.json"),
+      task: render_one(task_room.task, TaskView, "taskToTaskRoom.json"),
       users: render_many(task_room.users, UserView, "user.json")
     }
   end

@@ -1,4 +1,5 @@
 defmodule PlanningPoker.Users.Delete do
+  import(Ecto.Query, only: [from: 2])
   import PlanningPoker.Utils
 
   alias PlanningPoker.{Repo, Error}
@@ -12,11 +13,15 @@ defmodule PlanningPoker.Users.Delete do
   end
 
   defp delete(uuid) do
-    case get_user(uuid) do
+    query =
+      from u in User,
+        where: u.id == ^uuid
+
+    response = query |> Repo.one()
+
+    case response do
       nil -> {:error, %Error{status: 400, result: "User not found!"}}
       user -> Repo.delete(user)
     end
   end
-
-  defp get_user(uuid), do: Repo.get(User, uuid)
 end

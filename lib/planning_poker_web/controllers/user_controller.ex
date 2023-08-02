@@ -1,7 +1,6 @@
 defmodule PlanningPokerWeb.UserController do
   use PlanningPokerWeb, :controller
 
-  alias PlanningPoker.Users
   alias PlanningPoker.Users.User
 
   action_fallback PlanningPokerWeb.FallbackController

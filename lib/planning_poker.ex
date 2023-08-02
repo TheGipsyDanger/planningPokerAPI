@@ -12,6 +12,7 @@ defmodule PlanningPoker do
 
   defdelegate create_task_pontuation(params), to: PlanningPoker.TasksPontuations.Create, as: :call
   defdelegate update_task_pontuation(params), to: PlanningPoker.TasksPontuations.Update, as: :call
+  defdelegate get_task_pontuation(id), to: PlanningPoker.TasksPontuations.Show, as: :call
 
   defdelegate list_pontuations(), to: PlanningPoker.Pontuations.All, as: :call
   defdelegate get_pontuation(id), to: PlanningPoker.Pontuations.Show, as: :call

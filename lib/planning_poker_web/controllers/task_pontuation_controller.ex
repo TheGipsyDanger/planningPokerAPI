@@ -17,13 +17,16 @@ defmodule PlanningPokerWeb.TaskPontuationController do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.task_pontuation_path(conn, :show, task_pontuation))
-      |> render("show.json", task_pontuation: task_pontuation)
+      |> render("create.json", task_pontuation: task_pontuation)
     end
   end
 
   def show(conn, %{"id" => id}) do
-    task_pontuation = TasksPontuations.get_task_pontuation!(id)
-    render(conn, "show.json", task_pontuation: task_pontuation)
+    with {:ok, %TaskPontuation{} = task_pontuation} <- PlanningPoker.get_task_pontuation(id) do
+      conn
+      |> put_status(:ok)
+      |> render("show.json", task_pontuation: task_pontuation)
+    end
   end
 
   def update(conn, %{"id" => id, "task_pontuation" => task_pontuation_params}) do
@@ -31,7 +34,7 @@ defmodule PlanningPokerWeb.TaskPontuationController do
 
     with {:ok, %TaskPontuation{} = task_pontuation} <-
            TasksPontuations.update_task_pontuation(task_pontuation, task_pontuation_params) do
-      render(conn, "show.json", task_pontuation: task_pontuation)
+      render(conn, "create.json", task_pontuation: task_pontuation)
     end
   end
 

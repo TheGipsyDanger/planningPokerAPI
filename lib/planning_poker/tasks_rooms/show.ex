@@ -18,7 +18,9 @@ defmodule PlanningPoker.TasksRooms.Show do
         where: tr.id == ^id,
         left_join: u in assoc(tr, :users),
         left_join: t in assoc(tr, :task),
-        preload: [users: u, task: t]
+        left_join: tp in assoc(t, :tasks_pontuations),
+        left_join: utp in assoc(tp, :user),
+        preload: [users: u, task: {t, tasks_pontuations: {tp, user: utp}}]
       )
 
     response = query |> Repo.one()

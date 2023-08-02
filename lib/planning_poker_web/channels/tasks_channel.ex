@@ -19,6 +19,12 @@ defmodule PlanningPokerWeb.TasksChannel do
     {:reply, {:ok, payload}, socket}
   end
 
+  @impl true
+  def handle_in("change_voted", payload, socket) do
+    broadcast(socket, "change_voted", payload)
+    {:reply, {:ok, payload}, socket}
+  end
+
   # It is also common to receive messages from the client and
   # broadcast to everyone in the current topic (tasks:lobby).
   @impl true
